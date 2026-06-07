@@ -1,0 +1,675 @@
+[
+  {
+    "id": "24a09010-f1e5-4b5b-8a40-797382b98d17",
+    "timestamp": "2026-06-07 17:47:45",
+    "drugs": [
+      "Kardégic",
+      "Lisinopril",
+      "Paracétamol",
+      "Coumadine"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Kardégic",
+        "english_inn": "Acetylsalicylic acid",
+        "dosage": "75 mg"
+      },
+      {
+        "display_name": "Lisinopril",
+        "english_inn": "Lisinopril",
+        "dosage": "10 mg"
+      },
+      {
+        "display_name": "Paracétamol",
+        "english_inn": "Paracetamol",
+        "dosage": "1 g"
+      },
+      {
+        "display_name": "Coumadine",
+        "english_inn": "Warfarin",
+        "dosage": "5 mg"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Lisinopril",
+        "severity": "MINEUR",
+        "explanation": "Risque de diminution de l'activité antihypertensive du lisinopril par l'acide acétylsalicylique.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Coumadine",
+        "severity": "MAJEUR",
+        "explanation": "Majoration de l'effet anticoagulant et risque hémorragique accru par synergie pharmacodynamique.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Coumadine",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Paracétamol",
+        "drug_b": "Coumadine",
+        "severity": "MODÉRÉ",
+        "explanation": "Risque d'augmentation de l'effet anticoagulant, surtout en cas d'usage chronique de fortes doses (>2g/j). Surveillance INR requise.",
+        "source": "DDI 2.0.json"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Kardégic",
+        "type": "Approprié",
+        "dose prescrite": "75 mg",
+        "dose recommandée": "75-160 mg/j",
+        "facteur de risque": "Risque hémorragique accru chez le sujet âgé",
+        "explication": "Posologie standard pour la prévention secondaire des événements cardiovasculaires.",
+        "source": "drug_info.json"
+      },
+      {
+        "médicament": "Lisinopril",
+        "type": "Approprié",
+        "dose prescrite": "10 mg",
+        "dose recommandée": "5-20 mg/j",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Dose initiale habituelle pour l'HTA, sous réserve d'une fonction rénale normale.",
+        "source": "drug_info.json"
+      },
+      {
+        "médicament": "Paracétamol",
+        "type": "Approprié",
+        "dose prescrite": "1 g",
+        "dose recommandée": "Max 3-4 g/j",
+        "facteur de risque": "Interaction avec AVK",
+        "explication": "Dose unitaire standard, attention au risque de surdosage en cas de prises répétées.",
+        "source": "drug_info.json"
+      },
+      {
+        "médicament": "Coumadine",
+        "type": "Approprié",
+        "dose prescrite": "5 mg",
+        "dose recommandée": "Variable selon INR",
+        "facteur de risque": "Âge > 70 ans",
+        "explication": "Posologie dépendante de l'équilibre de l'INR, nécessite un suivi régulier.",
+        "source": "2022 Updated AGS BeersÂ® Criteria For Comment Period 11.10.22.md"
+      }
+    ],
+    "contraindications": [],
+    "summary": {
+      "n_meds": 4,
+      "inter_alerts": 2,
+      "dosage_alerts": 4,
+      "ci_alerts": 0,
+      "patient_name": "Ahmed Trabelsi",
+      "patient_age": 70,
+      "doctor_name": "Dr. Mohamed Ben Salem",
+      "report_md": "**Note de synthèse clinique :**\nLe patient présente une ordonnance associant un AVK (Coumadine), un AAP (Kardégic) et un IEC (Lisinopril). L'association AVK + AAP expose à un risque hémorragique majeur, particulièrement chez le sujet âgé, et ne doit être maintenue qu'en présence d'une indication cardiovasculaire formelle (ex: valve mécanique, stent récent). La posologie de 1g de paracétamol est appropriée, mais son usage régulier nécessite une surveillance de l'INR en raison d'une interaction pharmacodynamique potentielle. L'absence de protection gastrique (IPP) dans ce contexte de polythérapie antithrombotique est à noter.\n\n**Conduite à tenir :**\n- Réévaluer l'indication de l'association Kardégic + Coumadine (balance bénéfice/risque).\n- Introduire une protection gastrique par IPP si l'association antithrombotique est maintenue.\n- Surveiller l'INR de manière rapprochée lors de toute modification de la prise de paracétamol.\n- Vérifier la fonction rénale (DFG) pour l'adaptation posologique du Lisinopril."
+    },
+    "raw_text": "Dr. Mohamed Ben Salem\nMédecin Généraliste\nRue Habib Bourguiba, Sousse\nTél : 73 123 456\n\nORDONNANCE\n\nPatient : Ahmed Trabelsi\nÂge : 70 ans\nDate : 02/05/2026\n\n Coumadine (Warfarine) 5 mg\n   - 1 comprimé le soir\n   - Contrôle régulier de l'INR\n\n Kardégic 75 mg\n   - 1 sachet le matin après le petit-déjeuner\n\n Lisinopril 10 mg\n   - 1 comprimé le matin\n\n Paracétamol 1 g\n   - 1 comprimé en cas de douleur ou de fièvre\n   - Maximum 3 comprimés par jour\n\nConseils :\n- Surveillance de la tension artérielle.\n- Éviter l'automédication.\n- Revoir dans 1 mois."
+  },
+  {
+    "id": "a4779aaa-8943-43fa-ba77-eb67fe80a0ec",
+    "timestamp": "2026-06-07 00:48:33",
+    "drugs": [
+      "Doliprane",
+      "Cetirizine",
+      "Spray nasal"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Doliprane",
+        "english_inn": "Paracetamol",
+        "dosage": "1 comprimé toutes les 8 heures si fièvre ou douleur"
+      },
+      {
+        "display_name": "Cetirizine",
+        "english_inn": "Cetirizine",
+        "dosage": "1 comprimé le soir"
+      },
+      {
+        "display_name": "Spray nasal",
+        "english_inn": "Saline solution",
+        "dosage": "2 pulvérisations dans chaque narine, 3 fois/jour"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Doliprane",
+        "drug_b": "Cetirizine",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction pharmacologique documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Doliprane",
+        "drug_b": "Spray nasal",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction pharmacologique documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Cetirizine",
+        "drug_b": "Spray nasal",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction pharmacologique documentée dans les sources fournies.",
+        "source": "Aucun"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Doliprane",
+        "type": "Approprié",
+        "dose prescrite": "1 comprimé toutes les 8 heures",
+        "dose recommandée": "Maximum 3g/jour (soit 3 prises de 1g)",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Posologie standard conforme aux recommandations pour un adulte sans insuffisance hépatique.",
+        "source": "drug_info.json"
+      },
+      {
+        "médicament": "Cetirizine",
+        "type": "Approprié",
+        "dose prescrite": "1 comprimé le soir",
+        "dose recommandée": "10mg/jour",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Posologie usuelle pour le traitement de la rhinite allergique.",
+        "source": "drug_info.json"
+      }
+    ],
+    "contraindications": [],
+    "summary": {
+      "n_meds": 3,
+      "inter_alerts": 0,
+      "dosage_alerts": 2,
+      "ci_alerts": 0,
+      "patient_name": "Mohamed Ali",
+      "patient_age": 32,
+      "doctor_name": "Dr. Ahmed Ben Salah",
+      "report_md": "**Note de synthèse clinique :**\nOrdonnance cohérente pour une rhinopharyngite aiguë chez un patient jeune sans comorbidités. Le paracétamol est utilisé en première intention pour la gestion de la fièvre et des céphalées. La cétirizine, antihistaminique de seconde génération, est appropriée pour le contrôle des symptômes nasaux sans effet sédatif marqué. Le lavage de nez au sérum physiologique est le traitement de référence pour le confort respiratoire. Aucune redondance thérapeutique ni PIM identifiés selon les critères de Beers ou de Laroche pour ce profil patient.\n\n**Conduite à tenir :**\n- Poursuivre le tt symptomatique tel que prescrit.\n- Rappeler au patient de ne pas dépasser 3g/j de paracétamol (soit 3 prises de 1g) pour éviter tout risque d'hépatotoxicité.\n- Réévaluation clinique si persistance des symptômes au-delà de 7 jours."
+    },
+    "raw_text": "Dr. Ahmed Ben Salah\nSpécialité : Médecin Généraliste\nTél        : 73 123 456 |Adresse : Sousse\n\n ORDONNANCE MÉDICALE:\nPatient\nNom & Prénom : Mohamed Ali\nÂge          : 32 ans      Poids : 78 kg\nDate         : 01 / 06 / 2026\nDiagnostic   : Rhinopharyngite aiguë\n\n   Doliprane 1000 mg (Paracétamol)\n   Posologie  : 1 comprimé toutes les 8 heures si fièvre ou douleur\n   Durée      : 3 jours\n   Remarque   : après les repas\n\n   Cetirizine 10 mg\n   Posologie  : 1 comprimé le soir\n   Durée      : 5 jours\n   Remarque   : peut provoquer une légère somnolence\n\n   Spray nasal (solution saline)\n   Posologie  : 2 pulvérisations dans chaque narine, 3 fois/jour\n   Durée      : 5 jours\n   Remarque   : bien nettoyer avant utilisation\n\nConseils au patient :\n -Boire beaucoup d’eau (2L/jour)\n -Repos au lit recommandé\n -Éviter les changements brusques de température\nProchain rendez-vous : 08 / 06 / 2026\nValidité de l’ordonnance : 3 mois"
+  },
+  {
+    "id": "2c4c8f4d-923a-4ad5-bb53-9b4fb46a43d7",
+    "timestamp": "2026-06-06 23:57:01",
+    "drugs": [
+      "Warfarine",
+      "Aspirine",
+      "Lisinopril",
+      "Ibuprofène"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Warfarine",
+        "english_inn": "Warfarin",
+        "dosage": "5 mg, 1 comprimé par jour le soir"
+      },
+      {
+        "display_name": "Aspirine",
+        "english_inn": "Aspirin",
+        "dosage": "81 mg, 1 comprimé par jour après le petit-déjeuner"
+      },
+      {
+        "display_name": "Lisinopril",
+        "english_inn": "Lisinopril",
+        "dosage": "10 mg, 1 comprimé par jour le matin"
+      },
+      {
+        "display_name": "Ibuprofène",
+        "english_inn": "Ibuprofen",
+        "dosage": "400 mg, 1 comprimé en cas de douleur, max 3 par jour"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Warfarine",
+        "drug_b": "Aspirine",
+        "severity": "ANONYME",
+        "explanation": "Interaction non documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Warfarine",
+        "drug_b": "Lisinopril",
+        "severity": "ANONYME",
+        "explanation": "Interaction non documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Warfarine",
+        "drug_b": "Ibuprofène",
+        "severity": "MAJEUR",
+        "explanation": "Risque accru d'hémorragie digestive et ecchymoses par synergie pharmacodynamique et irritation muqueuse ; éviter l'association.",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "drug_a": "Aspirine",
+        "drug_b": "Lisinopril",
+        "severity": "ANONYME",
+        "explanation": "Interaction non documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Aspirine",
+        "drug_b": "Ibuprofène",
+        "severity": "ANONYME",
+        "explanation": "Interaction non documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Ibuprofène",
+        "severity": "MODÉRÉ",
+        "explanation": "Risque majoré d'effets indésirables, notamment une altération de la fonction rénale.",
+        "source": "db_drug_interactions (1).csv"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Warfarine",
+        "type": "Approprié",
+        "dose prescrite": "5 mg",
+        "dose recommandée": "Adaptée selon INR",
+        "facteur de risque": "Âge > 65 ans",
+        "explication": "Posologie standard, nécessite un ajustement strict selon le bilan biologique (INR).",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "médicament": "Ibuprofène",
+        "type": "Sur-dosage",
+        "dose prescrite": "400 mg, max 3/jour",
+        "dose recommandée": "À éviter",
+        "facteur de risque": "Âge > 65 ans, ATCD cardiovasculaires",
+        "explication": "PIM chez le sujet âgé, risque de rétention hydrosodée et d'insuffisance rénale.",
+        "source": "DDI 2.0.json"
+      }
+    ],
+    "contraindications": [
+      {
+        "médicament": "Ibuprofène",
+        "raison": "PIM chez le sujet âgé (Beers Criteria) : risque accru d'effets indésirables gastro-intestinaux et cardiovasculaires. CI absolue avec AVK.",
+        "gravité": "MAJEUR",
+        "source": "DDI 2.0.json"
+      }
+    ],
+    "summary": {
+      "n_meds": 4,
+      "inter_alerts": 2,
+      "dosage_alerts": 2,
+      "ci_alerts": 1,
+      "patient_name": "Ahmed Trabelsi",
+      "patient_age": 70,
+      "doctor_name": "Dr. Hatem Ben Salem",
+      "report_md": "**Note de synthèse clinique :**\nLe patient présente une ordonnance à haut risque hémorragique. L'association AVK (Warfarine) et AINS (Ibuprofène) est formellement contre-indiquée chez le sujet âgé en raison du risque majeur d'hémorragie digestive haute. L'utilisation concomitante d'Aspirine et de Warfarine, bien que parfois justifiée en post-stenting, nécessite une surveillance étroite et une protection gastrique systématique, non présente ici. L'Ibuprofène est un PIM chez le patient de 70 ans avec ATCD cardiovasculaires (risque de décompensation cardiaque et d'atteinte rénale).\n\n**Conduite à tenir :**\n- Arrêt immédiat de l'Ibuprofène et remplacement par du Paracétamol en cas de douleur.\n- Réévaluation de l'indication de l'Aspirine en association avec la Warfarine (balance bénéfice/risque).\n- Introduction d'un IPP (ex: Oméprazole) si le maintien de l'Aspirine est jugé indispensable.\n- Surveillance rapprochée de l'INR et recherche de signes de saignement (méléna, ecchymoses)."
+    },
+    "raw_text": "ORDONNANCE\n\nDr. Hatem Ben Salem\nMédecin Généraliste\nTél : 73 000 000\nAdresse : Sousse, Tunisie\n\nPatient : Ahmed Trabelsi\nÂge : 70 ans\nDate : 02/03/2026\n\n  Warfarine 5 mg comprimés\n  1 comprimé par jour le soir\n  Boîte de 30 comprimés\n\n  Aspirine 81 mg comprimés\n  1 comprimé par jour après le petit-déjeuner\n  Boîte de 30 comprimés\n\n  Lisinopril 10 mg comprimés\n  1 comprimé par jour le matin\n  Boîte de 30 comprimés\n\n  Ibuprofène 400 mg comprimés\n  1 comprimé en cas de douleur\n  Sans dépasser 3 prises par jour\n\nAntécédents cardiovasculaires connus.\n\nSignature et cachet\nDr. Hatem Ben Salem"
+  },
+  {
+    "id": "d065d0b3-10c4-4af6-a1eb-0f3df56960e4",
+    "timestamp": "2026-06-06 21:33:09",
+    "drugs": [
+      "Coumadine",
+      "Kardégic",
+      "Lisinopril",
+      "Paracétamol"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Coumadine",
+        "english_inn": "Warfarin",
+        "dosage": "5 mg, 1 comprimé le soir"
+      },
+      {
+        "display_name": "Kardégic",
+        "english_inn": "Acetylsalicylic acid",
+        "dosage": "75 mg, 1 sachet le matin après le petit-déjeuner"
+      },
+      {
+        "display_name": "Lisinopril",
+        "english_inn": "Lisinopril",
+        "dosage": "10 mg, 1 comprimé le matin"
+      },
+      {
+        "display_name": "Paracétamol",
+        "english_inn": "Paracetamol",
+        "dosage": "1 g, 1 comprimé en cas de douleur ou de fièvre (max 3/jour)"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Kardégic",
+        "severity": "MAJEUR",
+        "explanation": "Majoration de l'activité anticoagulante et du risque hémorragique par synergie pharmacodynamique.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Lisinopril",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Paracétamol",
+        "severity": "MODÉRÉ",
+        "explanation": "Risque d'augmentation de l'effet anticoagulant, surtout en cas d'usage chronique à forte dose (>2g/j).",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Lisinopril",
+        "severity": "MINEUR",
+        "explanation": "Risque de diminution de l'efficacité antihypertensive du Lisinopril par l'aspirine.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Coumadine",
+        "type": "Approprié",
+        "dose prescrite": "5 mg",
+        "dose recommandée": "Adaptée selon INR",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Posologie standard pour un AVK, à ajuster strictement selon les résultats de l'INR.",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "médicament": "Kardégic",
+        "type": "Approprié",
+        "dose prescrite": "75 mg",
+        "dose recommandée": "75-160 mg/j",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Dose usuelle en prévention cardiovasculaire chez le sujet âgé.",
+        "source": "db_drug_interactions.csv"
+      },
+      {
+        "médicament": "Lisinopril",
+        "type": "Approprié",
+        "dose prescrite": "10 mg",
+        "dose recommandée": "10-40 mg/j",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Posologie initiale classique pour le traitement de l'HTA.",
+        "source": "drug_info.json"
+      }
+    ],
+    "contraindications": [],
+    "summary": {
+      "n_meds": 4,
+      "inter_alerts": 2,
+      "dosage_alerts": 3,
+      "ci_alerts": 0,
+      "patient_name": "Ahmed Trabelsi",
+      "patient_age": 70,
+      "doctor_name": "Dr. Mohamed Ben Salem",
+      "report_md": "**Note de synthèse clinique :**\nPatient de 70 ans sous trithérapie cardiovasculaire associant un AVK (Coumadine), un AAP (Kardégic) et un IEC (Lisinopril). La posologie des molécules est conforme aux standards usuels pour une HTA et une prévention thromboembolique. Toutefois, la vigilance est requise concernant l'automédication par paracétamol, dont l'usage chronique ou à forte dose peut majorer l'effet anticoagulant de la warfarine. Aucune redondance moléculaire n'est identifiée dans cette prescription. Le risque hémorragique lié à l'association AVK/AAP doit être réévalué régulièrement en fonction de l'indication initiale de l'aspirine.\n\n**Conduite à tenir :**\n- Maintenir la surveillance régulière de l'INR.\n- Éduquer le patient sur les risques de l'automédication par paracétamol (dose minimale efficace, durée courte).\n- Réévaluer périodiquement le bénéfice/risque de l'association AVK + AAP (Kardégic) selon l'évolution des ATCD cardiovasculaires.\n- Surveiller les signes cliniques de saignement (ecchymoses, épistaxis, rectorragies)."
+    },
+    "raw_text": "Dr. Mohamed Ben Salem\nMédecin Généraliste\nRue Habib Bourguiba, Sousse\nTél : 73 123 456\n\nORDONNANCE\n\nPatient : Ahmed Trabelsi\nÂge : 70 ans\nDate : 02/06/2026\n\n Coumadine (Warfarine) 5 mg\n   - 1 comprimé le soir\n   - Contrôle régulier de l'INR\n\n Kardégic 75 mg\n   - 1 sachet le matin après le petit-déjeuner\n\n Lisinopril 10 mg\n   - 1 comprimé le matin\n\n Paracétamol 1 g\n   - 1 comprimé en cas de douleur ou de fièvre\n   - Maximum 3 comprimés par jour\n\nConseils :\n- Surveillance de la tension artérielle.\n- Éviter l'automédication.\n- Revoir dans 1 mois."
+  },
+  {
+    "id": "e1638067-2881-4960-93f9-50f7237095e2",
+    "timestamp": "2026-06-06 21:21:11",
+    "drugs": [
+      "Coumadine",
+      "Kardégic",
+      "Lisinopril",
+      "Paracétamol"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Coumadine",
+        "english_inn": "Warfarin",
+        "dosage": "5 mg, 1 comprimé le soir"
+      },
+      {
+        "display_name": "Kardégic",
+        "english_inn": "Acetylsalicylic acid",
+        "dosage": "75 mg, 1 sachet le matin après le petit-déjeuner"
+      },
+      {
+        "display_name": "Lisinopril",
+        "english_inn": "Lisinopril",
+        "dosage": "10 mg, 1 comprimé le matin"
+      },
+      {
+        "display_name": "Paracétamol",
+        "english_inn": "Paracetamol",
+        "dosage": "1 g, 1 comprimé en cas de douleur ou de fièvre (max 3/jour)"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Kardégic",
+        "severity": "MAJEUR",
+        "explanation": "Majoration de l'activité anticoagulante et du risque hémorragique par synergie pharmacodynamique.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Lisinopril",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Paracétamol",
+        "severity": "MODÉRÉ",
+        "explanation": "Risque d'augmentation de l'effet anticoagulant, surtout en cas d'usage chronique à forte dose (>2g/j).",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Lisinopril",
+        "severity": "MINEUR",
+        "explanation": "Risque de diminution de l'efficacité antihypertensive du Lisinopril par l'aspirine.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Coumadine",
+        "type": "Approprié",
+        "dose prescrite": "5 mg",
+        "dose recommandée": "Adaptée selon INR",
+        "facteur de risque": "Âge > 65 ans",
+        "explication": "Posologie usuelle, nécessite un ajustement individuel strict basé sur le bilan biologique (INR).",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "médicament": "Lisinopril",
+        "type": "Approprié",
+        "dose prescrite": "10 mg",
+        "dose recommandée": "10-40 mg/jour",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Dose initiale standard pour le contrôle tensionnel.",
+        "source": "drug_info.json"
+      },
+      {
+        "médicament": "Paracétamol",
+        "type": "Approprié",
+        "dose prescrite": "1 g (max 3g/j)",
+        "dose recommandée": "Max 3g/j chez le sujet âgé",
+        "facteur de risque": "Interaction potentielle avec AVK",
+        "explication": "Dose sécuritaire pour limiter l'impact sur le métabolisme de la warfarine.",
+        "source": "DDI 2.0.json"
+      }
+    ],
+    "contraindications": [],
+    "summary": {
+      "n_meds": 4,
+      "inter_alerts": 2,
+      "dosage_alerts": 3,
+      "ci_alerts": 0,
+      "patient_name": "Ahmed Trabelsi",
+      "patient_age": 70,
+      "doctor_name": "Dr. Mohamed Ben Salem",
+      "report_md": "**Note de synthèse clinique :**\nLe patient de 70 ans présente une ordonnance associant un AVK (Coumadine) et un AAP (Kardégic), situation classique mais nécessitant une surveillance étroite du risque hémorragique. La posologie du Lisinopril est standard pour une HTA. L'usage du paracétamol est approprié en première intention antalgique, sous réserve de ne pas dépasser les doses recommandées pour éviter toute interférence avec l'équilibre de l'INR. Aucune redondance moléculaire n'est identifiée. La PEC doit se concentrer sur l'éducation thérapeutique concernant les signes de saignement et le respect strict des posologies.\n\n**Conduite à tenir :**\n- Maintenir la surveillance régulière de l'INR et de la fonction rénale (DFG).\n- Éduquer le patient sur les signes d'alerte hémorragique (ecchymoses, épistaxis, méléna).\n- Privilégier le paracétamol en cas de douleur et limiter l'automédication par AINS.\n- Vérifier l'observance du traitement antihypertenseur."
+    },
+    "raw_text": "--------------------------------------------------\nDr. Mohamed Ben Salem\nMédecin Généraliste\nRue Habib Bourguiba, Sousse\nTél : 73 123 456\n\nORDONNANCE\n\nPatient : Ahmed Trabelsi\nÂge : 70 ans\nDate : 02/06/2026\n\nRp/\n\n1. Coumadine® (Warfarine) 5 mg\n   - 1 comprimé le soir\n   - Contrôle régulier de l'INR\n\n2. Kardégic® 75 mg\n   - 1 sachet le matin après le petit-déjeuner\n\n3. Lisinopril 10 mg\n   - 1 comprimé le matin\n\n4. Paracétamol 1 g\n   - 1 comprimé en cas de douleur ou de fièvre\n   - Maximum 3 comprimés par jour\n\nConseils :\n- Surveillance de la tension artérielle.\n- Éviter l'automédication.\n- Revoir dans 1 mois."
+  },
+  {
+    "id": "265599f5-ecfe-475a-9c59-27fb8e8883b1",
+    "timestamp": "2026-06-06 20:51:30",
+    "drugs": [
+      "Coumadine",
+      "Kardégic",
+      "Lisinopril",
+      "Paracétamol"
+    ],
+    "drugs_full": [
+      {
+        "display_name": "Coumadine",
+        "english_inn": "Warfarin",
+        "dosage": "5 mg"
+      },
+      {
+        "display_name": "Kardégic",
+        "english_inn": "Acetylsalicylic acid",
+        "dosage": "75 mg"
+      },
+      {
+        "display_name": "Lisinopril",
+        "english_inn": "Lisinopril",
+        "dosage": "10 mg"
+      },
+      {
+        "display_name": "Paracétamol",
+        "english_inn": "Paracetamol",
+        "dosage": "1 g"
+      }
+    ],
+    "results": [
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Kardégic",
+        "severity": "MAJEUR",
+        "explanation": "Majoration de l'activité anticoagulante et du risque hémorragique par synergie pharmacodynamique.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Lisinopril",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Coumadine",
+        "drug_b": "Paracétamol",
+        "severity": "MODÉRÉ",
+        "explanation": "Risque d'augmentation de l'effet anticoagulant, surtout en cas d'usage chronique à forte dose (>2g/j).",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Lisinopril",
+        "severity": "MINEUR",
+        "explanation": "Risque de diminution de l'efficacité antihypertensive du Lisinopril par l'aspirine.",
+        "source": "db_drug_interactions (1).csv"
+      },
+      {
+        "drug_a": "Kardégic",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      },
+      {
+        "drug_a": "Lisinopril",
+        "drug_b": "Paracétamol",
+        "severity": "ANONYME",
+        "explanation": "Aucune interaction documentée dans les sources fournies.",
+        "source": "Aucun"
+      }
+    ],
+    "dosage": [
+      {
+        "médicament": "Coumadine",
+        "type": "Approprié",
+        "dose prescrite": "5 mg",
+        "dose recommandée": "Adaptée selon INR",
+        "facteur de risque": "Âge > 65 ans, risque hémorragique",
+        "explication": "Posologie variable selon l'INR cible, nécessite un suivi biologique régulier.",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "médicament": "Kardégic",
+        "type": "Approprié",
+        "dose prescrite": "75 mg",
+        "dose recommandée": "75-100 mg/j",
+        "facteur de risque": "Âge > 65 ans",
+        "explication": "Dose antiagrégante standard, risque hémorragique majoré par l'association aux AVK.",
+        "source": "DDI 2.0.json"
+      },
+      {
+        "médicament": "Paracétamol",
+        "type": "Approprié",
+        "dose prescrite": "1 g",
+        "dose recommandée": "< 3-4 g/j",
+        "facteur de risque": "Aucun risque identifié",
+        "explication": "Posologie usuelle, respecter les intervalles de 6h.",
+        "source": "drug_info.json"
+      }
+    ],
+    "contraindications": [],
+    "summary": {
+      "n_meds": 4,
+      "inter_alerts": 2,
+      "dosage_alerts": 3,
+      "ci_alerts": 0,
+      "patient_name": "Ahmed Trabelsi",
+      "patient_age": 70,
+      "doctor_name": "Dr. Mohamed Ben Salem",
+      "report_md": "**Note de synthèse clinique :**\nLe patient présente une ordonnance associant un AVK (Coumadine) et un AAP (Kardégic), situation à haut risque hémorragique nécessitant une justification clinique formelle (ex: valve mécanique ou SCA récent). La posologie du paracétamol est standard, mais une vigilance est requise sur la fonction hépatique et le suivi de l'INR en cas de modification de la prise. L'absence de protection gastrique (IPP) chez ce patient sous bithérapie antithrombotique est un point de vigilance majeur au regard de l'âge (70 ans) et du risque iatrogène.\n\n**Conduite à tenir :**\n- Réévaluer l'indication de l'association AVK + AAP (balance bénéfice/risque).\n- Introduire une gastroprotection par IPP (ex: oméprazole 20 mg/j) en cas de maintien de la bithérapie.\n- Surveiller l'INR de manière rapprochée lors de toute modification de la posologie du paracétamol.\n- Vérifier la fonction rénale (DFG) pour l'ajustement du Lisinopril."
+    },
+    "raw_text": "--------------------------------------------------\nDr. Mohamed Ben Salem\nMédecin Généraliste\nRue Habib Bourguiba, Sousse\nTél : 73 123 456\n\nORDONNANCE\n\nPatient : Ahmed Trabelsi\nÂge : 70 ans\nDate : 02/06/2026\n\nRp/\n\n1. Coumadine® (Warfarine) 5 mg\n   - 1 comprimé le soir\n   - Contrôle régulier de l'INR\n\n2. Kardégic® 75 mg\n   - 1 sachet le matin après le petit-déjeuner\n\n3. Lisinopril 10 mg\n   - 1 comprimé le matin\n\n4. Paracétamol 1 g\n   - 1 comprimé en cas de douleur ou de fièvre\n   - Maximum 3 comprimés par jour\n\nConseils :\n- Surveillance de la tension artérielle.\n- Éviter l'automédication.\n- Revoir dans 1 mois.\n\nSignature et Cachet\nDr. Mohamed Ben Salem\n--------------------------------------------------"
+  }
+]

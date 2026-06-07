@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+python-dotenv
+pandas
+langchain-community
+faiss-cpu
+sentence-transformers
+langchain-text-splitters
+transformers
+torch
+google-genai
+llama-index-readers-file
+llama-parse
+python-multipart
+pydantic
