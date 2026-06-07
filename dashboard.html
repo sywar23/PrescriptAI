@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrescriptIA - Dashboard Clinique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=1.5">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <i class="fa-solid fa-house-medical"></i>
+            <span>PrescriptIA</span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i> Accueil</a>
+            <button class="nav-item active tab-btn" data-tab="tab-manual"><i class="fa-solid fa-capsules"></i> Analyser
+                une ordonnance</button>
+            <button class="nav-item tab-btn" data-tab="tab-history"><i class="fa-solid fa-clock-rotate-left"></i>
+                Historique</button>
+            <button class="nav-item tab-btn" data-tab="tab-about"><i class="fa-solid fa-circle-info"></i> À
+                propos</button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="update-db-btn" class="btn-update">
+                <div class="sync-icon-wrapper">
+                    <i class="fa-solid fa-database db-icon"></i>
+                    <i class="fa-solid fa-arrows-rotate sync-arrow"></i>
+                </div>
+                <span>Actualiser la base</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div id="tab-manual" class="tab-content">
+            <div class="streamlit-banner">
+                <div style="font-size: 2rem; margin-bottom: 10px;"><i class="fa-solid fa-link"></i></div>
+                <h1 class="banner-title">AnalysIA</h1>
+                <p class="banner-subtitle">Système intelligent d'analyse des prescriptions médicales</p>
+            </div>
+
+            <div class="section-label"><i class="fa-solid fa-file-upload"></i> ANALYSE INTELLIGENTE D'ORDONNANCE</div>
+            <div class="upload-container" id="drop-zone">
+                <input type="file" id="pdf-input" class="hidden" accept=".pdf">
+                <div class="upload-box">
+                    <div class="upload-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div class="upload-text">
+                        <h3>Glissez-déposez votre ordonnance ici</h3>
+                        <p>ou <span class="browse-text" onclick="document.getElementById('pdf-input').click()">parcourez
+                                vos fichiers</span> (PDF uniquement)</p>
+                    </div>
+                </div>
+
+                <div id="pdf-preview" class="hidden">
+                    <div class="file-card">
+                        <div class="file-info">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <div class="file-details">
+                                <span id="pdf-name">Ordonnance.pdf</span>
+                                <span class="file-status">Prêt pour l'analyse</span>
+                            </div>
+                        </div>
+                        <button class="remove-file"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label"><i class="fa-solid fa-pen-to-square"></i> SAISIR LA PRESCRIPTION MANUELLEMENT
+            </div>
+            <textarea class="text-area" id="prescription-text" placeholder="# Ordonnance..."></textarea>
+
+            <!-- Modern Results Section -->
+            <div id="analysis-results" class="identified-meds-bar hidden">
+                <div class="meds-label">
+                    <i class="fa-solid fa-pills"></i> MÉDICAMENTS IDENTIFIÉS
+                </div>
+                <div class="meds-list" id="quick-drugs-list">
+                    <!-- Meds badges will appear here -->
+                </div>
+            </div>
+
+            <div id="actions-container" class="actions-bar hidden">
+                <button id="analyze-btn-main" class="btn-analyze">
+                    <i class="fa-solid fa-microscope"></i> Analyser la Prescription
+                </button>
+                <button class="btn-clear" onclick="window.location.reload();">
+                    <i class="fa-solid fa-eraser"></i> Effacer
+                </button>
+            </div>
+
+            <div id="clinical-analysis-details" class="hidden">
+                <div class="exploration-row"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                    <div class="exploration-title">
+                        <h2 style="font-size: 1.5rem; color: #1e3a8a; font-weight: 800;">PrescriptIA: Exploration
+                            Analytique</h2>
+                    </div>
+                </div>
+
+                <div class="analysis-tabs-container">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="analysis-tabs">
+                            <button class="analysis-tab active" data-sec="sec-interactions">
+                                <i class="fa-solid fa-handshake-slash"></i> Interactions
+                            </button>
+                            <button class="analysis-tab" data-sec="sec-dosage">
+                                <i class="fa-solid fa-vial"></i> Dosage
+                            </button>
+                            <button class="analysis-tab" data-sec="sec-contra">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Contre-indications
+                            </button>
+                        </div>
+                        <button id="btn-patient-dossier" class="btn-dossier-patient">
+                            <i class="fa-solid fa-file-medical"></i> Dossier Patient
+                        </button>
+                    </div>
+                </div>
+
+                <div class="analysis-content-box">
+                    <!-- Stats shown for the active context -->
+                    <div class="stats-grid hidden" id="stats-grid-container" style="display: none !important;">
+                        <div class="stat-card-v2">
+                            <div class="stat-icon-v2 purple"><i class="fa-solid fa-pills"></i></div>
+                            <div class="stat-body">
+                                <div class="stat-value" id="count-meds-stat">0</div>
+                                <div class="stat-label">Médicaments</div>
+                            </div>
+                        </div>
+                        <div class="stat-card-v2">
+                            <div class="stat-icon-v2 rose"><i class="fa-solid fa-link"></i></div>
+                            <div class="stat-body">
+                                <div class="stat-value" id="count-inters">0</div>
+                                <div class="stat-label">Combinaisons</div>
+                            </div>
+                        </div>
+                        <div class="stat-card-v2">
+                            <div class="stat-icon-v2 amber"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="stat-body">
+                                <div class="stat-value" id="analysis-time">0.0s</div>
+                                <div class="stat-label">Temps d'Analyse</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-sec active" id="sec-interactions">
+
+                        <div id="interactions-chart-container" class="hidden"
+                            style="margin-top: 30px; padding: 25px; background: white; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                            <h4
+                                style="margin-bottom: 25px; color: #1e3a8a; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;">
+                                <i class="fa-solid fa-chart-simple" style="color: #0ea5e9;"></i> Répartition des Risques
+                                Cliniques
+                            </h4>
+                            <div style="height: 250px; width: 100%; position: relative;">
+                                <canvas id="interactionsChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div id="interaction-alerts" class="alert-box interaction hidden">
+                            <div class="alert-title"><i class="fa-solid fa-circle-exclamation"></i> Conflits Détectés
+                            </div>
+                            <div id="interactions-list"></div>
+                            <div class="table-container" style="margin-top: 20px; overflow-x: auto;">
+                                <table class="clinical-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Médicament 1</th>
+                                            <th>Médicament 2</th>
+                                            <th>Sévérité</th>
+                                            <th>Analyse Clinique</th>
+                                            <th>Source</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="interactions-table-body">
+                                        <!-- Rows will be injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="clinical-engine-placeholder" id="inter-placeholder"
+                            style="padding: 60px; text-align: center; color: #94a3b8;">
+                            <div style="font-size: 3rem; margin-bottom: 20px; opacity: 0.3;"><i
+                                    class="fa-solid fa-microscope"></i></div>
+                            <h3 style="font-weight: 700; color: #64748b; margin-bottom: 8px;">Moteur d'Exploration
+                                Clinique</h3>
+                            <p style="font-size: 0.9rem; opacity: 0.7;">Prêt pour l'analyse des interactions et des
+                                risques cliniques.</p>
+                        </div>
+                    </div>
+                    <div class="tab-sec hidden" id="sec-dosage">
+                        <!-- Dosage Summary Row -->
+                        <div class="dosage-summary-row">
+                            <div class="mini-stat-card">
+                                <div class="mini-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                                <div class="mini-val" id="dos-total">0</div>
+                                <div class="mini-label">TOTAL</div>
+                            </div>
+                            <div class="mini-stat-card danger">
+                                <div class="mini-icon"><i class="fa-solid fa-arrow-up"></i></div>
+                                <div class="mini-val" id="dos-sur">0</div>
+                                <div class="mini-label">SURDOSAGE</div>
+                            </div>
+
+                            <div class="mini-stat-card info">
+                                <div class="mini-icon"><i class="fa-solid fa-arrow-down"></i></div>
+                                <div class="mini-val" id="dos-sous">0</div>
+                                <div class="mini-label">SOUS-DOSAGE</div>
+                            </div>
+                            <div class="mini-stat-card success">
+                                <div class="mini-icon"><i class="fa-solid fa-check"></i></div>
+                                <div class="mini-val" id="dos-appr">0</div>
+                                <div class="mini-label">APPROPRIÉ</div>
+                            </div>
+                        </div>
+
+                        <div id="dosage-chart-container" class="hidden"
+                            style="margin-bottom: 30px; padding: 25px; background: white; border-radius: 20px; border: 1px solid #e2e8f0;">
+                            <h4 style="margin-bottom: 20px; color: #1e3a8a; font-weight: 800; font-size: 1rem;"><i
+                                    class="fa-solid fa-chart-pie"></i> Répartition des Dosages Cliniques</h4>
+                            <div style="height: 200px; width: 100%; position: relative;">
+                                <canvas id="dosageChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="alert-title"><i class="fa-solid fa-vial-circle-check"></i> Détail Clinique
+                                Individuel</div>
+                            <div class="table-container" style="margin-top: 15px; overflow-x: auto;">
+                                <table class="clinical-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Médicament</th>
+                                            <th>Type</th>
+                                            <th>Prescrit</th>
+                                            <th>Recommandé</th>
+                                            <th>Facteur Risque</th>
+                                            <th>Explication</th>
+                                            <th>Source</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dosage-table-body">
+                                        <!-- Rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="dosage-list" class="hidden"></div>
+                        </div>
+                    </div>
+                    <div class="tab-sec hidden" id="sec-contra">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+                            <div>
+                                <h3 style="color: #1e3a8a; font-weight: 800; font-size: 1.4rem; margin-bottom: 5px;">
+                                    Analyse des Contre-indications</h3>
+                                <p style="color: #64748b; font-size: 0.9rem;">Vérification des critères STOPP/START,
+                                    PRISCUS et Laroche</p>
+                            </div>
+                            <div class="major-alert-card">
+                                <div class="alert-label">ALERTES MAJEURES</div>
+                                <div class="alert-val" id="count-major-ci">0</div>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="table-container" style="overflow-x: auto;">
+                                <table class="clinical-table">
+                                    <thead style="background: #fff5f5;">
+                                        <tr>
+                                            <th style="color: #991b1b;">MÉDICAMENT</th>
+                                            <th style="color: #991b1b;">RAISON DU BLOCAGE</th>
+                                            <th style="color: #991b1b;">SÉVÉRITÉ</th>
+                                            <th style="color: #991b1b;">SOURCE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ci-table-body">
+                                        <!-- Rows injected here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="contra-list" class="hidden"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+        <div id="tab-history" class="tab-content hidden">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <h1 style="margin:0;">Historique</h1>
+                <button id="clear-history-btn" class="btn-clear" style="color:#ef4444; border-color:#fca5a5;">
+                    <i class="fa-solid fa-trash-sweep"></i> Tout effacer
+                </button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+        <div id="tab-home" class="tab-content hidden">
+            <div style="padding:50px;">Bienvenue sur PrescriptIA (Streamlit Version).</div>
+        </div>
+        <div id="tab-about" class="tab-content hidden">
+            <div class="about-clinical-container">
+                <div class="about-left-col">
+                    <h1 class="about-h1">Analyse Multi-Dimensionnelle</h1>
+                    <p class="about-p-main">Chaque ordonnance est soumise à un triple contrôle rigoureux par nos agents
+                        spécialisés :</p>
+
+                    <div class="objective-list">
+                        <div class="obj-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Interactions :</strong>
+                                <span>Détection des conflits entre médicaments pouvant altérer l'efficacité ou provoquer
+                                    des effets indésirables.</span>
+                            </div>
+                        </div>
+                        <div class="obj-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Dosages :</strong>
+                                <span>Vérification de la posologie par rapport aux standards cliniques pour éviter les
+                                    surdosages ou sous-dosages.</span>
+                            </div>
+                        </div>
+                        <div class="obj-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div>
+                                <strong>Contre-indications :</strong>
+                                <span>Analyse des risques spécifiques liés au profil patient (allergies, pathologies
+                                    chroniques).</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-mission-section">
+                        <div class="mission-item">
+                            <h2 class="mission-h2"><i class="fa-solid fa-bullseye"></i> Notre Mission</h2>
+                            <p>PrescriptIA a été conçu pour répondre à un défi majeur de la santé moderne : la
+                                complexité croissante des prescriptions. Notre mission est d'éliminer les erreurs
+                                médicamenteuses évitables en fournissant une double vérification intelligente et
+                                instantanée.</p>
+                        </div>
+
+                        <div class="mission-item">
+                            <h2 class="mission-h2"><i class="fa-solid fa-lightbulb"></i> L'Innovation Clinique</h2>
+                            <p>Plus qu'un simple outil, c'est un véritable compagnon numérique pour le clinicien. En
+                                alliant la puissance de l'Intelligence Artificielle à des bases de données
+                                pharmacologiques certifiées, nous transformons l'analyse de l'ordonnance en un processus
+                                fluide et sécurisé.</p>
+                        </div>
+
+                        <div class="mission-item">
+                            <h2 class="mission-h2"><i class="fa-solid fa-hand-holding-medical"></i> Engagement &
+                                Fiabilité</h2>
+                            <p>Nous nous engageons à offrir une plateforme qui respecte les standards cliniques les plus
+                                stricts (STOPP/START). Chaque alerte est sourcée, chaque analyse est motivée par la
+                                science, pour que le médecin reste maître de sa décision en toute confiance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-right-col">
+                    <div class="legend-card-modern">
+                        <h3>Légende des Niveaux de Sévérité</h3>
+
+                        <div class="legend-item-v2 majeur">
+                            <div class="l-indicator"></div>
+                            <div class="l-content">
+                                <strong>MAJEUR</strong>
+                                <span>Risque vital ou interaction grave. Action immédiate.</span>
+                            </div>
+                        </div>
+
+                        <div class="legend-item-v2 modere">
+                            <div class="l-indicator"></div>
+                            <div class="l-content">
+                                <strong>MODÉRÉ</strong>
+                                <span>Nécessite une surveillance ou un ajustement clinique.</span>
+                            </div>
+                        </div>
+
+                        <div class="legend-item-v2 mineur">
+                            <div class="l-indicator"></div>
+                            <div class="l-content">
+                                <strong>MINEUR</strong>
+                                <span>Risque faible, interaction possible à surveiller.</span>
+                            </div>
+                        </div>
+
+                        <div class="legend-item-v2 anonyme">
+                            <div class="l-indicator"></div>
+                            <div class="l-content">
+                                <strong>ANONYME</strong>
+                                <span>Statut inconnu. Présence d'interaction inconnue.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="status-footer">
+        <div id="status-dot" class="status-dot" style="background:#ff4b4b;"></div>
+        Serveur: <span id="status-text">Vérification...</span>
+    </div>
+
+    <!-- DOSSIER PATIENT MODAL — Premium -->
+    <div id="dossier-modal" class="modal-overlay">
+        <div class="modal-container">
+
+            <!-- Modal Header -->
+            <div class="modal-header-v2">
+                <div class="modal-header-content">
+                    <div class="modal-icon">📋</div>
+                    <div class="modal-title-box">
+                        <h3>Dossier Patient</h3>
+                        <div id="dossier-patient-subtitle">Rapport d'analyse clinique des prescriptions</div>
+                    </div>
+                </div>
+                <button id="close-dossier-modal" class="btn-close-circle">✕</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div id="dossier-modal-body" class="modal-body-v2">
+                <div style="text-align:center; padding:40px; color:#64748b;"><i class="fa-solid fa-sync fa-spin"></i>
+                    Chargement...</div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer-v2">
+                <button id="close-dossier-btn" class="btn-clear" style="margin: 0; padding: 10px 22px;">Fermer</button>
+                <button id="download-dossier-btn" class="btn-analyze" style="margin: 0; padding: 10px 24px;">
+                    <i class="fa-solid fa-download"></i> Télécharger PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT WIDGET (Unifié avec Doctor Bot) -->
+    <div class="chatbot-container" id="chatbot-widget">
+        <div class="chat-window" id="chatWindowWidget">
+            <div class="chat-header">
+                <div class="chat-admin">
+                    <div class="admin-avatar">IA</div>
+                    <div>
+                        <div class="admin-name">Assistant PrescriptIA</div>
+                        <div class="admin-status">En ligne</div>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChatWidget"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chat-messages-widget" class="chat-body">
+                <div class="message bot">
+                    <div class="bubble">Bonjour ! Je suis l'IA de PrescriptIA. Comment puis-je vous aider dans l'analyse
+                        de vos ordonnances ?</div>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input-widget" placeholder="Écrivez votre message...">
+                <button id="chat-send-widget" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-trigger" id="chatTriggerWidget">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="notification-dot"></span>
+        </button>
+    </div>
+
+    <script src="js/dashboard.js?v=10.0"></script>
+</body>
+
+</html>

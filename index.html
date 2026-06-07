@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrescriptIA — Plateforme Médicale Intelligente</title>
+    <meta name="description" content="Sécurisez vos prescriptions avec l'IA.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=1.5">
+    <script src="js/main.js?v=1.2" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-house-medical"></i>
+            PrescriptIA
+        </div>
+        <nav class="nav-links">
+            <a href="#hero">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#about">À Propos</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>La santé de demain, <span>sécurisée par l'IA</span> aujourd'hui.</h1>
+                <p class="hero-description">Analysez vos ordonnances en un clic. Notre intelligence artificielle
+                    multi-agents détecte les interactions médicamenteuses et sécurise vos traitements avec une précision
+                    clinique.</p>
+                <div class="hero-actions">
+                    <a href="dashboard.html" class="btn-cta"
+                        style="padding: 18px 45px; font-size: 1.1rem; border-radius: 12px;">Analyser mon ordonnance</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <!-- Particles -->
+                <div class="particle p1"></div>
+                <div class="particle p2"></div>
+
+                <!-- Floating Icons -->
+                <div class="floating-icon icon-1"><i class="fa-solid fa-pills"></i></div>
+                <div class="floating-icon icon-2"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="floating-icon icon-3"><i class="fa-solid fa-notes-medical"></i></div>
+
+                <img src="images/medical-analysis.png" alt="Medical Analysis" class="hero-main-img">
+            </div>
+        </section>
+
+        <!-- STATS STRIP -->
+        <div
+            style="background: white; padding: 50px 100px; display: flex; justify-content: space-around; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+            <div style="text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--primary); font-weight: 800;">24/7</h3>
+                <p style="color: var(--text-gray); font-weight: 500;">Analyse Continue</p>
+            </div>
+            <div style="text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--primary); font-weight: 800;">99.9%</h3>
+                <p style="color: var(--text-gray); font-weight: 500;">Précision OCR</p>
+            </div>
+            <div style="text-align: center;">
+                <h3 style="font-size: 2.5rem; color: var(--primary); font-weight: 800;">Local</h3>
+                <p style="color: var(--text-gray); font-weight: 500;">Données Sécurisées</p>
+            </div>
+        </div>
+
+        <!-- SERVICES SECTION -->
+        <section id="services" style="background: #fbfcfe; padding-left: 80px; padding-right: 80px;">
+            <div class="section-title">
+                <h2>Solutions Cliniques Intelligentes</h2>
+                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">Une architecture multi-agents pour
+                    une sécurité maximale.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-file-medical"></i></div>
+                    <h3>Extraction OCR Pro</h3>
+                    <p>Propulsé par LlamaCloud pour une lecture parfaite des ordonnances, même manuscrites.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Contrôle RAG Local</h3>
+                    <p>Vérification vectorielle instantanée contre de données cliniques sans cloud.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-notes-medical"></i></div>
+                    <h3>Rapports de Sécurité</h3>
+                    <p>Synthèse claire des interactions avec alertes visuelles par niveau de sévérité.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERTISE & SÉCURITÉ SECTION -->
+        <section id="about" style="background: white; padding: 80px 80px;">
+            <div style="width: 100%;">
+                <div class="section-title" style="text-align: left; margin-bottom: 50px;">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Expertise Clinique & Niveaux d'Alerte</h2>
+                    <p style="color: var(--text-gray); max-width: 700px;">Comprendre comment notre IA
+                        multi-agents sécurise chaque ligne de votre ordonnance.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: center;">
+                    <div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--primary);">Analyse
+                            Multi-Dimensionnelle</h3>
+                        <p style="color: var(--text-gray); margin-bottom: 30px;">
+                            Chaque ordonnance est soumise à un triple contrôle rigoureux par nos agents spécialisés :
+                        </p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 20px; display: flex; gap: 15px;">
+                                <i class="fa-solid fa-check-circle"
+                                    style="color: var(--secondary); margin-top: 5px;"></i>
+                                <div>
+                                    <strong>Interactions :</strong> Détection des conflits entre médicaments pouvant
+                                    altérer
+                                    l'efficacité ou provoquer des effets indésirables.
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; gap: 15px;">
+                                <i class="fa-solid fa-check-circle"
+                                    style="color: var(--secondary); margin-top: 5px;"></i>
+                                <div>
+                                    <strong>Dosages :</strong> Vérification de la posologie par rapport aux standards
+                                    cliniques pour éviter les surdosages ou sous-dosages.
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 20px; display: flex; gap: 15px;">
+                                <i class="fa-solid fa-check-circle"
+                                    style="color: var(--secondary); margin-top: 5px;"></i>
+                                <div>
+                                    <strong>Contre-indications :</strong> Analyse des risques spécifiques liés au profil
+                                    patient (allergies, pathologies chroniques).
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div
+                        style="background: var(--bg-light); padding: 40px; border-radius: 30px; border: 1px solid #e2e8f0;">
+                        <h4 style="margin-bottom: 25px; text-align: center;">Légende des Niveaux de Sévérité</h4>
+
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <!-- MAJEUR -->
+                            <div
+                                style="display: flex; align-items: center; gap: 20px; background: white; padding: 15px; border-radius: 15px; border-left: 5px solid #ef4444;">
+                                <div
+                                    style="width: 20px; height: 20px; background: #ef4444; border-radius: 50%; box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);">
+                                </div>
+                                <div style="flex: 1;">
+                                    <strong style="color: #ef4444;">MAJEUR</strong>
+                                    <p style="font-size: 0.85rem; color: var(--text-gray); margin: 0;">Risque vital ou
+                                        interaction grave. Action immédiate.</p>
+                                </div>
+                            </div>
+
+                            <!-- MODÉRÉ -->
+                            <div
+                                style="display: flex; align-items: center; gap: 20px; background: white; padding: 15px; border-radius: 15px; border-left: 5px solid #f59e0b;">
+                                <div
+                                    style="width: 20px; height: 20px; background: #f59e0b; border-radius: 50%; box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);">
+                                </div>
+                                <div style="flex: 1;">
+                                    <strong style="color: #f59e0b;">MODÉRÉ</strong>
+                                    <p style="font-size: 0.85rem; color: var(--text-gray); margin: 0;">Nécessite une
+                                        surveillance ou un ajustement clinique.</p>
+                                </div>
+                            </div>
+
+                            <!-- MINEUR -->
+                            <div
+                                style="display: flex; align-items: center; gap: 20px; background: white; padding: 15px; border-radius: 15px; border-left: 5px solid #10b981;">
+                                <div
+                                    style="width: 20px; height: 20px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);">
+                                </div>
+                                <div style="flex: 1;">
+                                    <strong style="color: #10b981;">MINEUR</strong>
+                                    <p style="font-size: 0.85rem; color: var(--text-gray); margin: 0;">Risque faible,
+                                        interaction possible à surveiller.</p>
+                                </div>
+                            </div>
+
+                            <!-- ANONYME -->
+                            <div
+                                style="display: flex; align-items: center; gap: 20px; background: white; padding: 15px; border-radius: 15px; border-left: 5px solid #94a3b8;">
+                                <div
+                                    style="width: 20px; height: 20px; background: #94a3b8; border-radius: 50%; box-shadow: 0 0 10px rgba(148, 163, 184, 0.4);">
+                                </div>
+                                <div style="flex: 1;">
+                                    <strong style="color: #64748b;">ANONYME</strong>
+                                    <p style="font-size: 0.85rem; color: var(--text-gray); margin: 0;">Traitement
+                                        sécurisé.
+                                        Aucune interaction détectée.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section
+            style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; text-align: center; padding: 100px;">
+            <p
+                style="font-size: 1.2rem; margin-bottom: 45px; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Accédez à la plateforme PrescriptIA et bénéficiez d'une analyse clinique instantanée pour tous vos
+                traitements.</p>
+
+        </section>
+    </main>
+
+    <!-- CHATBOT WIDGET -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-admin">
+                    <div class="admin-avatar">IA</div>
+                    <div>
+                        <div class="admin-name">Assistant PrescriptIA</div>
+                        <div class="admin-status">En ligne</div>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChat"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="chat-body" id="chat-messages-index">
+                <div class="message bot">
+                    <div class="bubble">Bonjour ! Je suis l'IA de PrescriptIA. Comment puis-je vous aider dans l'analyse
+                        de vos ordonnances ?</div>
+                </div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input-index" placeholder="Écrivez votre message...">
+                <button id="chat-send-index" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-trigger" id="chatTrigger">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span class="notification-dot"></span>
+        </button>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 25px;">
+                    <i class="fa-solid fa-house-medical"></i>
+                    PrescriptIA
+                </div>
+                <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.8;">Nous utilisons l'intelligence
+                    artificielle la plus avancée pour garantir la sécurité de vos prescriptions médicales.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Plateforme</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Analyse IA</a></li>
+                    <li><a href="#">Base Clinique</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Centre d'aide</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            style="text-align: center; padding-top: 40px; border-top: 1px solid #334155; color: #64748b; font-size: 0.9rem;">
+            &copy; 2026 PrescriptIA. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+
+</html>
